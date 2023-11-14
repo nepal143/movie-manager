@@ -1,0 +1,63 @@
+body{
+  background: rgb(14, 14, 14) ;
+  color : white ;
+
+}
+.movies-container{
+  display: flex;
+  align-items: center;
+  overflow-x:scroll;
+  scrollbar-width: 0px;
+} 
+.movie-poster{
+  width: 190px;
+}
+
+.movies-container::-webkit-scrollbar {
+  display: none;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding:10px  20px;
+}
+.heading{
+  font-size: 3vw;
+}
+input{
+  padding: 3px ;
+
+}
+.sub-heading{
+  font-size: 2vw;
+  margin-left: 20px;
+}
+.image-container{
+  position:  relative;
+  transition:  0.3s;
+  /* overflow: hidden; */
+  margin: 30px;
+  width: 150px; 
+}
+.image-container:hover{
+  scale: 1.1;
+
+}
+.image-container:hover .overlay{
+  opacity: 1;
+}
+.overlay{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.79);
+  opacity: 0 ;
+  width: 100%;
+  transition: 0.2s ease;
+  bottom: 0;
+  padding: 20px;
+  cursor:pointer;
+  text-align: center;
+}
