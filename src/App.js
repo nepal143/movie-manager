@@ -55,7 +55,7 @@ const onClickremovefavouriteMovies = (movie) =>{
 }
 useEffect(()=>{
   let newFavMovieList = JSON.parse(localStorage.getItem("react-movie-app-fav"));
-  if(newFavMovieList == []) newFavMovieList = movies;
+  if (newFavMovieList === null) newFavMovieList = movies;
   setfavouriteMovies(newFavMovieList)
 } , [])
 
