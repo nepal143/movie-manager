@@ -8,16 +8,25 @@ import removefav from "./components/removefav"
 function App() {
   let [movies , setMovies]  = useState([]);
   let [searchQuery , setSearchQuery]  = useState("star wars");
-const getMovieRequest = async (searchQuery)=>{
-    const url   = `http://www.omdbapi.com/?s=${searchQuery}&apikey=b511a478`; 
+  const getMovieRequest = async (searchQuery) => {
+    try {
+        const url = `https://www.omdbapi.com/?s=${searchQuery}&apikey=b511a478`;
+        const response = await fetch(url);
 
-    const responce = await fetch(url) ; 
-    const responceJson  = await responce.json() ;
-    console.log(responceJson);
-    if(responceJson.Search) {
-      setMovies(responceJson.Search) ;
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const responseJson = await response.json();
+        console.log(responseJson);
+
+        if (responseJson.Search) {
+            setMovies(responseJson.Search);
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
     }
-}
+};
 
 const onChange  = (e) =>{
   setSearchQuery(e.target.value.toString() )
